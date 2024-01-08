@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-outline card-info">
+          <div class="card-header">
+            <h3 class="card-title">
+          </h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body" >
+            <div class="container">
+                <h2>DEPENDENCIAS</h2>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">NUEVO +</button>
+            
+                <table class="table table-bordered">
+                    <tr>
+                      <th>Identificacion</th>
+                      <th>Parroquia</th>
+                      <th>Provincia</th>
+                      <th>Distrito</th>
+                      <th>Circuito</th>
+                      <th>SubCircuito</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
+                    <tr>
+                      <td>1900403366</td>
+                      <td>Cumbaratza</td>
+                      <td>Loja</td>
+                      <td>9</td>
+                      <td>22</td>
+                      <td>1</td>
+                    </tr>
+                  </tbody>
+                    <tr>
+                      <td>Veronica</td>
+                      <td>villavicencio</td>
+                      <td>Sargento</td>
+                      <td>123456789</td>
+                  </tbody>
+                    <tr>
+                      <td>Ainara</td>
+                      <td>Larreategui</td>
+                      <td>Comandante</td>
+                      <td>123456789</td>
+                 </tbody>
+                    <tr>
+                      <td>Alito</td>
+                      <td>Larreategui</td>
+                      <td>SubTeniente</td>
+                      <td>123456789</td>
+                </table>
+            
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Agregar Dependencia</h4>
+                      </div>
+                      <div class="modal-body">
+                        <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
+                        <form>
+                          <div class="form-group">
+                            <label for="nombre">PROVINCIA:</label>
+                            <input type="text" class="form-control" id="nombre">
+                          </div>
+                          <div class="form-group">
+                            <label for="apellido">PARROQUIA:</label>
+                            <input type="text" class="form-control" id="apellido">
+                          </div>
+                          <div class="form-group">
+                            <label for="cargo">DISTRITO:</label>
+                            <input type="text" class="form-control" id="cargo">
+                          </div>
+                          <div class="form-group">
+                            <label for="telefono">N° DISTRITO:</label>
+                            <input type="text" class="form-control" id="telefono">
+                          </div>
+                          <div class="form-group">
+                            <label for="nombre">COD.DISTRITO:</label>
+                            <input type="text" class="form-control" id="nombre">
+                          </div>
+                          <div class="form-group">
+                            <label for="apellido">CIRCUITO:</label>
+                            <input type="text" class="form-control" id="apellido">
+                          </div>
+                          <div class="form-group">
+                            <label for="cargo">N° CIRCUITO:</label>
+                            <input type="text" class="form-control" id="cargo">
+                          </div>
+                          <div class="form-group">
+                            <label for="telefono">COD.CIRCUITO:</label>
+                            <input type="text" class="form-control" id="telefono">
+                          </div><div class="form-group">
+                            <label for="nombre">SUBCIRCUITO:</label>
+                            <input type="text" class="form-control" id="nombre">
+                          </div>
+                          <div class="form-group">
+                            <label for="apellido">N° SUBCIRCUITO:</label>
+                            <input type="text" class="form-control" id="apellido">
+                          </div>
+                          <div class="form-group">
+                            <label for="cargo">COD.SUBCIRCUITO:</label>
+                            <input type="text" class="form-control" id="cargo">
+                          </div>
+                          <button type="submit" class="btn btn-default">Crear</button>
+                          <button type="submit" class="btn btn-default">Cancelar</button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+            
+             <script>
+                $(document).ready(function() {
+                  $('#table_id').DataTable();
+                });
+             </script>
+          </div>
+          <div class="card-footer">
+            Lista del personal de la Policia SubZona 7 de Loja
+          </div>
+        </div>
+      </div>
+      <!-- /.col-->
+    </div>
+    <!-- ./row -->
+  </section>
+
+
+{% endblock%}
