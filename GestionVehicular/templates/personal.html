@@ -2,111 +2,132 @@
 {% load static %}
 {% block content %}
 
-
 <section class="content">
     <div class="row">
-      <div class="col-md-12">
-        <div class="card card-outline card-info">
-          <div class="card-header">
-            <h3 class="card-title">
-          </h3>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body" >
-            <div class="container">
-                <h2>PERSONAL</h2>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar Usuario</button>
-            
-                <table class="table table-bordered">
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>Cargo</th>
-                      <th>Teléfono</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
-                    <tr>
-                      <td>Juan</td>
-                      <td>Pérez</td>
-                      <td>Teniente</td>
-                      <td>123456789</td>
-                    </tr>
-                  </tbody>
-                    <tr>
-                      <td>Veronica</td>
-                      <td>villavicencio</td>
-                      <td>Sargento</td>
-                      <td>123456789</td>
-                  </tbody>
-                    <tr>
-                      <td>Ainara</td>
-                      <td>Larreategui</td>
-                      <td>Comandante</td>
-                      <td>123456789</td>
-                 </tbody>
-                    <tr>
-                      <td>Alito</td>
-                      <td>Larreategui</td>
-                      <td>SubTeniente</td>
-                      <td>123456789</td>
-                </table>
-            
-                <!-- Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Agregar Usuario</h4>
-                      </div>
-                      <div class="modal-body">
-                        <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
-                        <form>
-                          <div class="form-group">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" id="nombre">
-                          </div>
-                          <div class="form-group">
-                            <label for="apellido">Apellido:</label>
-                            <input type="text" class="form-control" id="apellido">
-                          </div>
-                          <div class="form-group">
-                            <label for="cargo">Cargo:</label>
-                            <input type="text" class="form-control" id="cargo">
-                          </div>
-                          <div class="form-group">
-                            <label for="telefono">Teléfono:</label>
-                            <input type="text" class="form-control" id="telefono">
-                          </div>
-                          <button type="submit" class="btn btn-default">Agregar</button>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                      </div>
-                    </div>
-                  </div>
+        <div class="col-md-12">
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <h3 class="card-title"></h3>
                 </div>
-             </div>
-            
-             <script>
-                $(document).ready(function() {
-                  $('#table_id').DataTable();
-                });
-             </script>
-          </div>
-          <div class="card-footer">
-            Lista del personal de la Policia SubZona 7 de Loja
-          </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="container">
+                        <h2>PERSONAL</h2>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar Usuario</button>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">ELIMINAR</button>
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Teléfono</th>
+                                    <th>Ciudad</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Rango</th>
+                                    <th>Dependencia</th>
+                                    <th>Subcircuito</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
+                                {% for personal in personales  %}
+                                <tr>
+                                    <td>{{personal.id}}</td>
+                                    <td>{{personal.nombre}}</td>
+                                    <td>{{personal.apellido}}</td>
+                                    <td>{{personal.telefono}}</td>
+                                    <td>{{personal.ciudad}}</td>
+                                    <td>{{personal.fecha_de_nacimiento}}</td>
+                                    <td>{{personal.rango}}</td>
+                                    <td>{{personal.dependencia}}</td>
+                                    <td>{{personal.subcircuito_idsubcircuito}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Agregar Usuario</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Formulario con los campos que deseas enviar -->
+                                        <form method="post" action="{% url 'PERSONAL' %}">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="cedula">cedula:</label>
+                                                <input type="text" class="form-control" id="cedula" name="cedula">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nombre">Nombre:</label>
+                                                <input type="text" class="form-control" id="nombre" name="nombre">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="telefono">Teléfono:</label>
+                                                <input type="text" class="form-control" id="telefono" name="telefono">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ciudad">Ciudad:</label>
+                                                <input type="text" class="form-control" id="ciudad" name="ciudad">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                                              <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+                                          </div>
+                                          
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="rango">Rango:</label>
+                                                <input type="text" class="form-control" id="rango" name="rango">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="dependencia">Dependencia:</label>
+                                                <input type="text" class="form-control" id="dependencia" name="dependencia">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="subcircuito">Subcircuito:</label>
+                                                <input type="text" class="form-control" id="subcircuito" name="subcircuito">
+                                            </div>
+                                            <button type="submit" class="btn btn-default">Agregar</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            // Función para enviar el formulario al hacer clic en el botón "Agregar"
+                            function submitForm() {
+                                document.querySelector('form').submit();
+                            }
+
+                            $(document).ready(function () {
+                                $('#table_id').DataTable();
+                            });
+                        </script>
+
+                    </div>
+                    <div class="card-footer">
+                        Lista del personal de la Policia SubZona 7 de Loja
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-- /.col-->
+        <!-- /.col-->
     </div>
     <!-- ./row -->
-  </section>
+</section>
+
+{% endblock %}
 
 
-{% endblock%}

@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,8 +77,13 @@ WSGI_APPLICATION = 'GestionVehicular.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST':'localhost',
+        'DATABASE_PORT':'3606',
+        'NAME':'policiabase',
+        'USER':'root',
+        'PASSWORD':'8585Vero',      
+
     }
 }
 
@@ -112,18 +118,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+# imagenes
+import os
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = 'static/'
-MEDIA_URL='images/'
-STATICFILES_DIRS=[
-    BASE_DIR / 'static'
+STATIC_URL = '/static/'
+MEDIA_URL = '/images/'
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'GestionVehicular', 'static', 'assets', 'dist', 'img'),
 ]
-STATIC_ROOT= BASE_DIR / 'staticfiles'
-MEDIA_ROOT= BASE_DIR / 'images'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

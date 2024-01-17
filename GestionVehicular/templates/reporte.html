@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>nombres</th>
+      <th>apellidos</th>
+      <th>circuito</th>
+      <th>contacto</th>
+      <th>subcircuito</th>
+      <th>reclamo_sugerencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in Reporte %}
+      <tr>
+        <td>{{ item.nombres }}</td>
+        <td>{{ item.apellidos }}</td>
+        <td>{{ item.circuito }}</td>
+        <td>{{ item.contacto }}</td>
+        <td>{{ item.subcircuito }}</td>
+        <td>{{ item.reclamo_sugerencia }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

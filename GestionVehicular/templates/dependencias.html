@@ -16,45 +16,41 @@
             <div class="container">
                 <h2>DEPENDENCIAS</h2>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">NUEVO +</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">ELIMINAR</button>
             
                 <table class="table table-bordered">
+                  <thead>
                     <tr>
-                      <th>Identificacion</th>
-                      <th>Parroquia</th>
-                      <th>Provincia</th>
-                      <th>Distrito</th>
-                      <th>Circuito</th>
-                      <th>SubCircuito</th>
+                        <th>Id Dependencia</th>
+                        <th>Parroquia</th>
+                        <th>Provincia</th>
+                        <th>Cod de Distrito</th>
+                        <th>Nombre de Distrito</th>
+                        <th>Cod de Circuito</th>
+                        <th>Nombre de Circuito</th>
+                        <th>Cod de Subcircuito</th>
+                        <th>Nombre de Subcircuito</th>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
-                    <tr>
-                      <td>1900403366</td>
-                      <td>Cumbaratza</td>
-                      <td>Loja</td>
-                      <td>9</td>
-                      <td>22</td>
-                      <td>1</td>
-                    </tr>
-                  </tbody>
-                    <tr>
-                      <td>Veronica</td>
-                      <td>villavicencio</td>
-                      <td>Sargento</td>
-                      <td>123456789</td>
-                  </tbody>
-                    <tr>
-                      <td>Ainara</td>
-                      <td>Larreategui</td>
-                      <td>Comandante</td>
-                      <td>123456789</td>
-                 </tbody>
-                    <tr>
-                      <td>Alito</td>
-                      <td>Larreategui</td>
-                      <td>SubTeniente</td>
-                      <td>123456789</td>
+                </thead>
+                <tbody>
+                  <!-- AQUÍ LOS DATOS DE TUS USUARIOS REGISTRADOS SERÍAN MOSTRADOS -->
+                  {% for dependencia in dependencia  %}
+                  <tr>
+                      <td>{{dependencia.id_dependencia}}</td>
+                      <td>{{dependencia.nro_distrito}}</td>
+                      <td>{{dependencia.parroquia}}</td>
+                      <td>{{dependencia.provincia}}</td>
+                      <td>{{dependencia.cod_distrito}}</td>
+                      <td>{{dependencia.nombre_distrito}}</td>
+                      <td>{{dependencia.nro_circuito}}</td>
+                      <td>{{dependencia.cod_circuito}}</td>
+                      <td>{{dependencia.nombre_circuito}}</td>
+                      <td>{{dependencia.nro_subcircuito}}</td>
+                      <td>{{dependencia.cod_subcircuito}}</td>
+                      <td>{{dependencia.nombre_subcircuito}}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
                 </table>
             
                 <!-- Modal -->
